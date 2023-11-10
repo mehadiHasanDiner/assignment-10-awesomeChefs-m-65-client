@@ -43,10 +43,3 @@ const Chef = () => {
 };
 
 export default Chef;
-
-//  id,
-//     chefName,
-//     chefPicture,
-//     yearOfExperience,
-//     numberOfRecipes,
-//     likes,

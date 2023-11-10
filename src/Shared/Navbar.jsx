@@ -1,10 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { TbChefHat } from "react-icons/tb";
 
 const Navbar = () => {
   return (
-    <div>
-      <h1 className="bg-yellow-500">This is navbar</h1>
-    </div>
+    <>
+      <div className="flex justify-between shadow-2xl py-3 items-center px-4">
+        <div>
+          <h2 className="text-4xl font-bold flex text-pink-200 hover:text-yellow-200 cursor-pointer">
+            <Link to="/">
+              <span className=" text-3xl absolute top-0 -rotate-45 left-1">
+                <TbChefHat />
+              </span>{" "}
+              Awesome Chefs
+            </Link>{" "}
+          </h2>
+        </div>
+        <nav>
+          <Link className="mr-3" to="/">
+            Home
+          </Link>
+          <Link className="mr-3" to="/blog">
+            Blog
+          </Link>
+          <Link to="/signIn">Sign In</Link>
+        </nav>
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const Chef = () => {
+  const [recipes, setRecipes] = useState([]);
   const chefDetails = useLoaderData();
   const {
     id,
@@ -12,6 +13,13 @@ const Chef = () => {
     likes,
     shortBiography,
   } = chefDetails;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/recipe/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRecipes(res));
+  }, []);
+
   return (
     <>
       <div className="card card-side bg-base-100 shadow-xl flex-col md:flex-row rounded-none md:rounded-2xl">
@@ -29,6 +37,7 @@ const Chef = () => {
           <p>Likes: {likes}</p>
         </div>
       </div>
+      {recipes.length}
     </>
   );
 };

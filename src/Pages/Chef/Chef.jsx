@@ -23,7 +23,7 @@ const Chef = () => {
 
   return (
     <>
-      <h2 className="card-title text-pink-200 font-bold text-4xl">
+      <h2 className="card-title text-pink-200 font-bold text-3xl mb-3">
         {chefName}
       </h2>
       <div className="card card-side bg-base-100 shadow-2xl flex-col md:flex-row rounded-none md:rounded-2xl">

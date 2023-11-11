@@ -32,7 +32,7 @@ const Chefs = ({ chef }) => {
             <span>{likesBtn / 1000}k</span>
           </button>
           <span>
-            <Link to={`/${id}`}>
+            <Link to={`/chef/${id}`}>
               <button className="btn btn-neutral capitalize rounded-3xl">
                 View Recipes
               </button>

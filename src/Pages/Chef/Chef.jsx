@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Recipes from "./Recipes";
 
 const Chef = () => {
   const [recipes, setRecipes] = useState([]);
@@ -22,13 +23,14 @@ const Chef = () => {
 
   return (
     <>
-      <div className="card card-side bg-base-100 shadow-xl flex-col md:flex-row rounded-none md:rounded-2xl">
+      <h2 className="card-title text-pink-200 font-bold text-4xl">
+        {chefName}
+      </h2>
+      <div className="card card-side bg-base-100 shadow-2xl flex-col md:flex-row rounded-none md:rounded-2xl">
         <figure>
-          <img src={chefPicture} alt="Movie" />
+          <img src={chefPicture} alt={chefName} />
         </figure>
         <div className="card-body gap-0">
-          <h2 className="card-title text-pink-300 font-bold">{chefName}</h2>
-
           <div className="divide-y divide-gray-300">
             <p className="py-3">{shortBiography}</p>
             <p className="pt-3">Number of recipes: {numberOfRecipes} </p>
@@ -37,7 +39,11 @@ const Chef = () => {
           <p>Likes: {likes}</p>
         </div>
       </div>
-      {recipes.length}
+      <div className="mt-16 recipeCard-container">
+        {recipes.map((recipe) => (
+          <Recipes key={recipe.id} recipe={recipe}></Recipes>
+        ))}
+      </div>
     </>
   );
 };

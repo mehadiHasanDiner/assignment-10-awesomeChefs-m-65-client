@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="chefs-container">
+      <div className="myCard-container">
         {chefs.map((chef) => (
           <Chefs key={chef.id} chef={chef}></Chefs>
         ))}

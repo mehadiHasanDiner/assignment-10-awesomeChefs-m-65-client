@@ -51,12 +51,16 @@ const SignIn = () => {
             </div>
 
             <label className="label">
-              <Link
-                to="/register"
-                className="text-center label-text-alt link link-hover hover:font-bold"
-              >
-                New to Auth-Master? Please Register!
-              </Link>
+              <span>
+                Don't have an account?
+                <Link
+                  to="/register"
+                  className="text-center label-text-alt link link-hover hover:font-bold text-lg text-pink-600"
+                >
+                  {" "}
+                  Sign Up!
+                </Link>
+              </span>
             </label>
           </form>
           <div className="text-center mb-2 form-control px-8">

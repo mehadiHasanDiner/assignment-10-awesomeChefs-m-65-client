@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  const handleRegister = () => {};
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    console.log(name, photo, email, password);
+  };
 
   return (
     <>
@@ -22,6 +30,20 @@ const SignUp = () => {
                   placeholder="name"
                   className="input input-bordered"
                   required
+                  onChange={() => setName(event.target.value)}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo Url</span>
+                </label>
+                <input
+                  type="url"
+                  name="url"
+                  placeholder="photo url"
+                  className="input input-bordered"
+                  required
+                  onChange={() => setPhoto(event.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -34,6 +56,7 @@ const SignUp = () => {
                   placeholder="email"
                   className="input input-bordered"
                   required
+                  onChange={() => setEmail(event.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -46,14 +69,19 @@ const SignUp = () => {
                   placeholder="password"
                   className="input input-bordered"
                   required
+                  onChange={() => setPassword(event.target.value)}
                 />
                 <label className="label">
-                  <Link
-                    to="/signIn"
-                    className="text-center label-text-alt link link-hover hover:font-bold"
-                  >
-                    Already have an account? Please Login!
-                  </Link>
+                  <span>
+                    Already have an account?
+                    <Link
+                      to="/signIn"
+                      className="text-center label-text-alt link link-hover hover:font-bold text-lg text-pink-600"
+                    >
+                      {" "}
+                      Sign In!
+                    </Link>
+                  </span>
                 </label>
               </div>
               <div className="form-control mt-3">

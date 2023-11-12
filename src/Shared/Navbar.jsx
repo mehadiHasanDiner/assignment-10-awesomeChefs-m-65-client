@@ -16,7 +16,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex justify-between shadow-2xl py-4 items-center px-16">
+      <div className="flex justify-between shadow-2xl py-4 items-center px-16 bg-black">
         <div>
           <h2 className="text-4xl font-bold flex text-pink-200 hover:text-yellow-200 cursor-pointer">
             <Link to="/">

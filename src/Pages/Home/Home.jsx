@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chefs from "./Chefs";
+import BestDishes from "./BestDishes";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -16,6 +17,7 @@ const Home = () => {
           <Chefs key={chef.id} chef={chef}></Chefs>
         ))}
       </div>
+      <BestDishes></BestDishes>
     </>
   );
 };

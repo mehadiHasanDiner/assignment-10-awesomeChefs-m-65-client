@@ -1,12 +1,60 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
-  const handleLogin = () => {};
-  const handleGoogleLogin = () => {};
-  const handleGithubLogin = () => {};
+  const { signedInUser, createUserWithGoogle, createUserWithGithub } =
+    useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    if (email === "" || password === "") {
+      setError("Please fill all the fields");
+      return;
+    } else if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+    signedInUser(email, password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setSuccess("You have successfully logged in");
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error.message);
+      });
+    setError("");
+  };
+  const handleGoogleLogin = () => {
+    createUserWithGoogle()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error.message);
+      });
+  };
+  const handleGithubLogin = () => {
+    createUserWithGithub()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="-mt-8">
@@ -24,7 +72,7 @@ const SignIn = () => {
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
-                required
+                onChange={() => setEmail(event.target.value)}
               />
             </div>
             <div className="form-control">
@@ -36,7 +84,7 @@ const SignIn = () => {
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
-                required
+                onChange={() => setPassword(event.target.value)}
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -44,11 +92,13 @@ const SignIn = () => {
                 </a>
               </label>
             </div>
-            <div className="form-control mb-4">
+            <span className="text-warning text-center">{error}</span>
+            <div className="form-control">
               <button className="btn btn-active capitalize text-lg">
                 Sign in
               </button>
             </div>
+            <span className="text-success text-center">{success}</span>
 
             <label className="label">
               <span>

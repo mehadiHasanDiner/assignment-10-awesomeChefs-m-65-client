@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignUp = () => {
-  const [name, setName] = useState("");
+  const { createUser, updateUser } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const [userName, setUserName] = useState("");
   const [photo, setPhoto] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // console.log(typeof userName);
+
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log(name, photo, email, password);
+    const form = event.target;
+    // console.log(name, photo, email, password);
+    if (userName === "" || photo === "" || email === "" || password === "") {
+      setError("Please fill all the fields");
+      return;
+    } else if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+    createUser(email, password, userName, photo)
+      .then((result) => {
+        const loggedInUser = result.user;
+        updateUser(result.user, {
+          displayName: userName,
+          photoURL: photo,
+        })
+          .then(() => {
+            console.log("profile updated");
+          })
+          .catch();
+        setSuccess("You have successfully registered");
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error.message);
+      });
+
+    setError("");
+    form.reset();
   };
 
   return (
@@ -29,8 +66,7 @@ const SignUp = () => {
                   name="name"
                   placeholder="name"
                   className="input input-bordered"
-                  required
-                  onChange={() => setName(event.target.value)}
+                  onChange={() => setUserName(event.target.value)}
                 />
               </div>
               <div className="form-control">
@@ -42,7 +78,6 @@ const SignUp = () => {
                   name="url"
                   placeholder="photo url"
                   className="input input-bordered"
-                  required
                   onChange={() => setPhoto(event.target.value)}
                 />
               </div>
@@ -55,7 +90,6 @@ const SignUp = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
                   onChange={() => setEmail(event.target.value)}
                 />
               </div>
@@ -68,9 +102,13 @@ const SignUp = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
                   onChange={() => setPassword(event.target.value)}
                 />
+                <label className="label mx-auto">
+                  <span className="text-warning mt-1">{error}</span>
+                  <span className="text-success mt-1">{success}</span>
+                </label>
+
                 <label className="label">
                   <span>
                     Already have an account?
@@ -79,7 +117,7 @@ const SignUp = () => {
                       className="text-center label-text-alt link link-hover hover:font-bold text-lg text-pink-600"
                     >
                       {" "}
-                      Sign In!
+                      Sign in!
                     </Link>
                   </span>
                 </label>

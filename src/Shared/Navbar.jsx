@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { TbChefHat } from "react-icons/tb";
+import { AuthContext } from "../provider/AuthProvider";
+import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  // console.log(user);
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch(() => {
+        console.log(console.error);
+      });
+  };
   return (
     <>
       <div className="flex justify-between shadow-2xl py-4 items-center px-16">
@@ -16,14 +27,43 @@ const Navbar = () => {
             </Link>{" "}
           </h2>
         </div>
-        <nav>
+        <nav className="flex items-center">
           <Link className="mr-3" to="/">
             Home
           </Link>
           <Link className="mr-3" to="/blog">
             Blog
           </Link>
-          <Link to="/signIn">Sign In</Link>
+          {user ? (
+            <div className="flex items-center">
+              <span className="avatar mx-3">
+                <div className="w-12 ">
+                  <span
+                    className="tooltip tooltip-bottom absolute"
+                    data-tip={user && user.displayName}
+                  >
+                    <img
+                      className="rounded-full border-red-300 border-2"
+                      src={user.photoURL}
+                    />
+                  </span>
+                </div>
+              </span>
+              <span
+                onClick={handleSignOut}
+                className="tooltip tooltip-bottom"
+                data-tip="Sign out"
+              >
+                <button className="btn btn-circle text-lg -mb-1">
+                  <LuLogOut />
+                </button>
+              </span>
+            </div>
+          ) : (
+            <Link className="mr-3" to="/signIn">
+              Sign In
+            </Link>
+          )}
         </nav>
       </div>
     </>

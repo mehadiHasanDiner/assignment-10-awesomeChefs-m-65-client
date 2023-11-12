@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -11,6 +11,11 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -26,6 +31,7 @@ const SignIn = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setSuccess("You have successfully logged in");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -43,6 +49,7 @@ const SignIn = () => {
         setError(error.message);
         console.log(error.message);
       });
+    navigate(from, { replace: true });
   };
   const handleGithubLogin = () => {
     createUserWithGithub()
@@ -54,6 +61,7 @@ const SignIn = () => {
         setError(error.message);
         console.log(error.message);
       });
+    navigate(from, { replace: true });
   };
 
   return (

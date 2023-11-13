@@ -18,8 +18,8 @@ const Home = () => {
           <Chefs key={chef.id} chef={chef}></Chefs>
         ))}
       </div>
-      <h1 className="text-3xl font-medium text-center mt-16">
-        🥘 Our Best Dishes 🥘
+      <h1 className="text-3xl font-medium text-center mt-16 ">
+        🥘 <span className="italic">Our Favorite Dishes</span> 🥘
       </h1>
 
       <BestDishes></BestDishes>

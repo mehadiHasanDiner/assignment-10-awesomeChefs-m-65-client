@@ -13,3 +13,11 @@
 .recipeCard-container {
   @apply grid gap-8 mb-8 md:grid-cols-1 lg:grid-cols-2;
 }
+
+.slick-slide>div {
+  margin: 0 15px;
+}
+
+.slick-list {
+  margin: 0 -15px;
+}

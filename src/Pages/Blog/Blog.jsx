@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import blogData from "../../assets/blogData.json";
+import html2PDF from "jspdf-html2canvas";
 
 const Blog = () => {
+  const [creatingPDF, setCreatingPDF] = useState(false);
+
+  const handleDownloadPDF = () => {
+    const capture = document.querySelector(".capture-pdf");
+    setCreatingPDF(true);
+    html2PDF(capture).then((pdf) => {
+      const imgData = pdf.toDataURL("img/png");
+      const doc = new jsPDF("p", "mm", "a4");
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
+    });
+  };
   return (
     <>
       <div className="mx-16 flex flex-col-reverse md:flex-row md:justify-between -mt-12">
@@ -14,6 +28,19 @@ const Blog = () => {
             </span>
           </h1>
           <h2 className="text-2xl font-bold mt-6 ">Write you blog here.</h2>
+          <div className="mt-3">
+            <button
+              className="btn btn-neutral capitalize text-lg"
+              onClick={handleDownloadPDF}
+              disabled={!(creatingPDF === false)}
+            >
+              {creatingPDF ? (
+                <span className="">Creating PDF</span>
+              ) : (
+                <span>Create PDF</span>
+              )}
+            </button>
+          </div>
         </div>
         <div className="w-full">
           <Player
@@ -25,8 +52,8 @@ const Blog = () => {
         </div>
       </div>
 
-      <div className="mx-16 mt-8 items-center">
-        <div className="border-2 p-3 rounded-md mt-4">
+      <div className="mx-16 mt-8 items-center capture-pdf text-black">
+        <div className="border-4 p-3 rounded-md m-4 bg-white border-pink-300">
           <div className="pb-2">
             <strong>Qus-1: </strong> Tell us the differences between
             uncontrolled and controlled components.
@@ -47,7 +74,7 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="border-2 p-3 rounded-md mt-4">
+        <div className="border-4 p-3 rounded-md m-4 bg-white border-pink-300">
           <div className="pb-2">
             <strong>Qus-2: </strong>How to validate React props using PropTypes?
           </div>
@@ -74,7 +101,7 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="border-2 p-3 rounded-md mt-4">
+        <div className="border-4 p-3 rounded-md m-4 bg-white border-pink-300">
           <div className="pb-2">
             <strong>Qus-3: </strong> Tell us the difference between nodejs and
             express js
@@ -108,7 +135,7 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="border-2 p-3 rounded-md mt-4">
+        <div className="border-4 p-3 rounded-md m-4 bg-white border-pink-300">
           <div className="pb-2">
             <strong>Qus-4: </strong> What is a custom hook, and why will you
             create a custom hook?

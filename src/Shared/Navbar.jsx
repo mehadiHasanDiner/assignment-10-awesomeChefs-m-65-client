@@ -3,9 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import { TbChefHat } from "react-icons/tb";
 import { AuthContext } from "../provider/AuthProvider";
 import { LuLogOut } from "react-icons/lu";
-import "./Navbar.css";
 
 const Navbar = () => {
+  const active = {
+    color: "yellow",
+    fontWeight: "bold",
+  };
+  const inactive = {
+    color: "white",
+  };
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
   const handleSignOut = () => {
@@ -28,17 +34,15 @@ const Navbar = () => {
         </div>
         <nav className="flex items-center">
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "active mr-3" : "inactive mr-3"
-            }
+            className="mr-3"
+            style={({ isActive }) => (isActive ? active : inactive)}
             to="/"
           >
             Home
           </NavLink>
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "active mr-3" : "inactive mr-3"
-            }
+            className="mr-3"
+            style={({ isActive }) => (isActive ? active : inactive)}
             to="/blog"
           >
             Blog
@@ -70,9 +74,8 @@ const Navbar = () => {
             </div>
           ) : (
             <NavLink
-              className={({ isActive }) =>
-                isActive ? "active mr-3" : "inactive mr-3"
-              }
+              className="mr-3"
+              style={({ isActive }) => (isActive ? active : inactive)}
               to="/signIn"
             >
               Sign In

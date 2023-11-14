@@ -7,7 +7,7 @@ const BestDishes = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/recipes")
+    fetch("https://assignment-10-awesome-chefs-m-65-server.vercel.app/recipes")
       .then((res) => res.json())
       .then((chefs) => setRecipes(chefs));
   }, []);

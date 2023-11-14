@@ -46,7 +46,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef/${params.id}`),
+          fetch(
+            `https://assignment-10-awesome-chefs-m-65-server.vercel.app/chef/${params.id}`
+          ),
       },
       { path: "blog", element: <Blog></Blog> },
       { path: "signIn", element: <SignIn></SignIn> },

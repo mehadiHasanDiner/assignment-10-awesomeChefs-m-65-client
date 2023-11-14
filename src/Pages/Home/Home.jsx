@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chefs from "./Chefs";
 import BestDishes from "./BestDishes";
+import PickOrder from "./PickOrder";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -23,6 +24,7 @@ const Home = () => {
       </h1>
 
       <BestDishes></BestDishes>
+      <PickOrder></PickOrder>
     </>
   );
 };

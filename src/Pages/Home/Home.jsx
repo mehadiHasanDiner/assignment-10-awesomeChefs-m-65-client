@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chefs from "./Chefs";
 import BestDishes from "./BestDishes";
 import PickOrder from "./PickOrder";
+import Banner from "./Banner";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -14,6 +15,7 @@ const Home = () => {
 
   return (
     <>
+      <Banner></Banner>
       <div className="myCard-container">
         {chefs.map((chef) => (
           <Chefs key={chef.id} chef={chef}></Chefs>

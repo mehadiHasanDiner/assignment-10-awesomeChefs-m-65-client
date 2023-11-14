@@ -36,10 +36,10 @@ const Banner = () => {
             <img src="https://i.ibb.co/tH1g85S/image-Banne1.jpg" alt="" />
           </div>
         </SwiperSlide>
-        <div className="top-[50%] absolute z-10 button-next-slide group-hover:left-0 -left-[24rem] duration-500 text-white w-[50px] h-[50px] bg-black grid place-items-center">
+        <div className="md:top-[55%] top-[40%] absolute z-10 button-next-slide group-hover:left-0 -left-[24rem] duration-500 text-white w-[50px] h-[50px] bg-black grid place-items-center">
           <HiOutlineArrowNarrowLeft />
         </div>
-        <div className="top-[50%] absolute z-10 button-prev-slide group-hover:right-0 -right-[24rem] duration-500 text-white w-[50px] h-[50px] bg-black grid place-items-center">
+        <div className="md:top-[55%] top-[40%]  absolute z-10 button-prev-slide group-hover:right-0 -right-[24rem] duration-500 text-white w-[50px] h-[50px] bg-black grid place-items-center">
           <HiOutlineArrowNarrowRight />
         </div>
       </Swiper>

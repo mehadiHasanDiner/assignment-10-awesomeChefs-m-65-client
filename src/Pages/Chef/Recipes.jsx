@@ -7,7 +7,8 @@ import "@smastrom/react-rating/style.css";
 
 const Recipes = ({ recipe }) => {
   const [favorite, setFavorite] = useState(true);
-  const { id, recipeName, recipeImage, rating, cookingMethod } = recipe;
+  const { id, recipeName, recipeImage, rating, cookingMethod, ingredients } =
+    recipe;
 
   const handleFavorite = () => {
     setFavorite(false);
@@ -27,8 +28,18 @@ const Recipes = ({ recipe }) => {
           <img src={recipeImage} alt="Shoes" />
         </figure>
         <div className="card-body gap-0">
-          <h2 className="card-title">{recipeName}</h2>
-          <p>{cookingMethod}</p>
+          <h2 className="card-title font-bold">{recipeName}</h2>
+          <p className="my-2">
+            <strong>Cooking Method: </strong>
+            {cookingMethod}
+          </p>
+          <p className="font-bold">Ingredients: </p>
+          {ingredients.map((ingredient, index) => (
+            <p className="capitalize" key={index}>
+              {" "}
+              {index + 1}. {ingredient}
+            </p>
+          ))}
           <div className="card-actions justify-between items-center">
             <div className="text-lg flex items-center ">
               <Rating style={{ maxWidth: 110 }} value={rating} readOnly />

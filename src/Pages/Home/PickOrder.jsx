@@ -21,13 +21,13 @@ const PickOrder = () => {
             <p className="mt-3">CONTACTLESS TAKE-OUT</p>
             <p className="my-2">To place an order for pickup,</p>
             <p>
-              please order via <Link to="/">Awesome Chefs</Link>.
+              please order via <Link to="/">Best Chef</Link>.
             </p>
             <button className="btn btn-neutral mt-3 mb-8">Order Pickup</button>
             <p className="">DELIVERY EXPANDED</p>
             <p>To place an order for delivery, please choose from</p>
             <p>
-              one of our partners below: <Link to="/">Awesome Chefs</Link>.
+              one of our partners below: <Link to="/">Best Chef</Link>.
             </p>
           </div>
         </div>

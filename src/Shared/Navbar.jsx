@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { TbChefHat } from "react-icons/tb";
 import { AuthContext } from "../provider/AuthProvider";
 import { LuLogOut } from "react-icons/lu";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -16,24 +17,32 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex justify-between shadow-2xl py-4 items-center px-16 bg-stone-900">
+      <div className="flex justify-between shadow-2xl py-4 items-center px-16 bg-stone-900 sticky top-0 z-10">
         <div>
           <h2 className="text-4xl font-bold flex text-pink-200 hover:text-yellow-200 cursor-pointer">
-            <Link to="/">
-              <span className=" text-3xl absolute top-1 -rotate-45 left-12">
-                <TbChefHat />
-              </span>{" "}
-              Awesome Chefs
-            </Link>{" "}
+            <span className=" text-3xl absolute top-1 -rotate-45 left-11">
+              <TbChefHat />
+            </span>{" "}
+            Best Chef
           </h2>
         </div>
         <nav className="flex items-center">
-          <Link className="mr-3" to="/">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "active mr-3" : "inactive mr-3"
+            }
+            to="/"
+          >
             Home
-          </Link>
-          <Link className="mr-3" to="/blog">
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "active mr-3" : "inactive mr-3"
+            }
+            to="/blog"
+          >
             Blog
-          </Link>
+          </NavLink>
           {user ? (
             <div className="flex items-center">
               <span className="avatar mx-3">
@@ -60,9 +69,14 @@ const Navbar = () => {
               </span>
             </div>
           ) : (
-            <Link className="mr-3" to="/signIn">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "active mr-3" : "inactive mr-3"
+              }
+              to="/signIn"
+            >
               Sign In
-            </Link>
+            </NavLink>
           )}
         </nav>
       </div>

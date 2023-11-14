@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="mt-16 bg-neutral-900 text-white px-16 pt-12 pb-2 divide-y-2 divide-red-900">
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-6">
         <div>
-          <h2 className="text-xl font-bold mb-8">Awesome Chefs</h2>
+          <h2 className="text-xl font-bold mb-8">Best Chef</h2>
           <p>
             There are many variations of passages of Lorem Ipsum , but the
             majority have suffered alteration in some form.
@@ -47,9 +47,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-between pt-2">
-        <p>@2023 Awesome Chefs. All Rights Reserved</p>
+        <p>@2023 Best Chef. All Rights Reserved</p>
         <p>
-          Powered by: <strong>Awesome Chefs</strong>
+          Powered by: <strong>Best Chef</strong>
         </p>
       </div>
     </div>

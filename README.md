@@ -12,6 +12,8 @@ Server Side Github Link -> [Sever Github](https://github.com/mehadiHasanDiner/as
 
 ## Resources & Credits
 
+Firebase Authentication System -> [Firebase Authentication System](https://firebase.google.com/)
+
 Title Text Animation -> [Tailwind Play: Daisy UI](https://daisyui.com/)
 
 Slider Animation -> [Swiper JS](https://swiperjs.com/react#usage)
@@ -25,8 +27,6 @@ Blog page PDF Genaretor -> [React PDF](https://react-pdf.org/)
 Icon -> [React Icon](https://react-icons.github.io/react-icons/)
 
 Icon -> [React Rating](https://dreyescat.github.io/react-rating/)
-
-![Alt text](home-page.png)
 
 ## React Router Dom v6.4
 

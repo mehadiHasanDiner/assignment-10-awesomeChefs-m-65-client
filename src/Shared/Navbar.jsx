@@ -26,10 +26,12 @@ const Navbar = () => {
       <div className="flex justify-between shadow-2xl py-4 items-center px-16 bg-stone-900 sticky top-0 z-10">
         <div>
           <h2 className="text-4xl font-bold flex text-pink-200 hover:text-yellow-200 cursor-pointer">
-            <span className=" text-3xl absolute top-1 -rotate-45 left-11">
-              <TbChefHat />
-            </span>{" "}
-            Best Chef
+            <Link to="/">
+              <span className=" text-3xl absolute top-1 -rotate-45 left-11">
+                <TbChefHat />
+              </span>{" "}
+              Best Chef
+            </Link>
           </h2>
         </div>
         <nav className="flex items-center">
